@@ -3,12 +3,17 @@ import requests
 from requests.auth import HTTPBasicAuth
 from bs4 import BeautifulSoup
 import groq
+import os
+from dotenv import load_dotenv
 
-# ---- Hardcoded Confluence & API Credentials ---- #
+# Load environment variables
+load_dotenv()
+
+# ---- Load API Credentials from Environment Variables ---- #
 CONFLUENCE_URL = "https://mukeshanbazhagan.atlassian.net/wiki/rest/api/content/"
-EMAIL = "mukeshanbazhagan@gmail.com"
-API_TOKEN = "ATATT3xFfGF0K4zkk7a-Hdd5Kx8FEZ67cR4pwmpIi9yzYOJ1cn1uB5eBArJ5K77ELQnT7uJH0TbM_TIZ2Fqw-Oq68uTciVqpCtvyFVk_Cq826k3ExYfGW6JylYDuzeeNhNwbFmS0T-iP495wIIBRIdZ3JcQEMxUYGYPCSmpJQSSKNh6CH76d_a8=97EBC594"
-GROQ_API_KEY = "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"
+EMAIL = os.getenv("CONFLUENCE_EMAIL")  # Fetch from environment variables
+API_TOKEN = os.getenv("CONFLUENCE_API_TOKEN")  # Fetch from environment variables
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")  # Fetch from environment variables
 
 app = Flask(__name__)
 
