@@ -2,14 +2,14 @@
 
 This project is a **Flask-based AI chatbot** that fetches Confluence pages, processes their content, and answers user questions using Groq's AI model. The app is deployed on **Render**.
 
-## 🚀 Features
+## Features
 - Fetches Confluence pages using Atlassian REST API
 - Extracts text content from Confluence pages
 - Uses **Groq's LLaMA 3** model to generate AI-powered responses
 - Web UI to interact with Confluence data
 - Deployed on **Render**
 
-## 🛠 Tech Stack
+## Tech Stack
 - **Python** (Flask, Requests, BeautifulSoup)
 - **Groq API** for AI-powered responses
 - **Render** for deployment
@@ -17,26 +17,26 @@ This project is a **Flask-based AI chatbot** that fetches Confluence pages, proc
 
 ---
 
-## 🔧 Installation
+## Installation
 
-### 1️⃣ Clone the Repository
+### Clone the Repository
 ```bash
 git clone https://github.com/yourusername/confluence-ai-chatbot.git
 cd confluence-ai-chatbot
 ```
 
-### 2️⃣ Create a Virtual Environment
+### Create a Virtual Environment
 ```bash
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
-### 3️⃣ Install Dependencies
+### Install Dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4️⃣ Set Up Environment Variables
+### Set Up Environment Variables
 Create a `.env` file in the root directory:
 ```
 CONFLUENCE_EMAIL=your_email@example.com
@@ -46,7 +46,7 @@ GROQ_API_KEY=your_groq_api_key
 
 ---
 
-## ▶️ Run the Flask App Locally
+## Run the Flask App Locally
 ```bash
 python app.py
 ```
@@ -54,23 +54,23 @@ The app will be available at: [http://127.0.0.1:5000](http://127.0.0.1:5000)
 
 ---
 
-## 🚀 Deployment on Render
+## Deployment on Render
 
-### 1️⃣ Push Your Code to GitHub
+### Push Your Code to GitHub
 ```bash
 git add .
 git commit -m "Initial commit"
 git push origin main
 ```
 
-### 2️⃣ Deploy to Render
+### Deploy to Render
 - Go to **Render Dashboard** → Create a New Web Service
 - Connect to your GitHub repository
 - Set **Build Command**: `pip install -r requirements.txt`
 - Set **Start Command**: `gunicorn -w 4 -b 0.0.0.0:$PORT app:app`
 - Add environment variables (`.env` values) in Render's **Environment Variables** section
 
-### 3️⃣ Get Your Public URL
+###  Get Your Public URL
 After deployment, Render will provide a public URL like:
 ```
 https://your-app.onrender.com
@@ -79,7 +79,7 @@ Use this link to access the chatbot.
 
 ---
 
-## 📜 API Endpoints
+##  API Endpoints
 
 | Method | Endpoint | Description |
 |--------|----------|--------------|
@@ -88,20 +88,20 @@ Use this link to access the chatbot.
 
 ---
 
-## 📌 Notes
+##  Notes
 - Keep your **API keys secure** and do **NOT** commit `.env` to GitHub.
 - Use **gunicorn** for production deployment on Render.
 
 ---
 
-## 💡 Future Enhancements
+##  Future Enhancements
 - Add authentication for secure access
 - Improve UI with React or Flask templates
 - Integrate with Slack or Teams for direct chat support
 
-### ⭐ If you find this project helpful, consider starring it on GitHub!
+### If you find this project helpful, consider starring it on GitHub!
 
 ---
 
-📧 **Contact:** [Your Email]  | 🌐 **GitHub:** [Your GitHub Profile]
+📧 **Contact:** [mukeshanbazhagan@gmail.com]  | 🌐 **GitHub:** [https://github.com/MukeshAnbazhagan/]
 
