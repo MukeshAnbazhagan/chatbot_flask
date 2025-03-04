@@ -82,4 +82,7 @@ def index():
     return render_template("index.html", pages=pages, selected_page_id=selected_page_id, previous_qa=previous_qa)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=10000, debug=True)
+
+
+
