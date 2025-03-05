@@ -11,9 +11,9 @@ load_dotenv()
 
 # ---- Load API Credentials from Environment Variables ---- #
 CONFLUENCE_URL = "https://mukeshanbazhagan.atlassian.net/wiki/rest/api/content/"
-EMAIL = os.getenv("CONFLUENCE_EMAIL")  # Fetch from environment variables
-API_TOKEN = os.getenv("CONFLUENCE_API_TOKEN")  # Fetch from environment variables
-GROQ_API_KEY = os.getenv("GROQ_API_KEY")  # Fetch from environment variables
+EMAIL = os.getenv("CONFLUENCE_EMAIL")  
+API_TOKEN = os.getenv("CONFLUENCE_API_TOKEN")  
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")  
 
 app = Flask(__name__)
 
@@ -61,13 +61,15 @@ def get_ai_response(question, document):
 @app.route("/", methods=["GET", "POST"])
 def index():
     pages = get_confluence_pages()  # Fetch all pages for dropdown
-    selected_page_id = None
+    selected_page_id = request.form.get("page_id")  # Keep the selected page
     previous_qa = []  # Store previous questions & answers
     
     if request.method == "POST":
-        selected_page_id = request.form.get("page_id")  # Keep selected page
         question = request.form.get("question")
         
+        if not selected_page_id:  # Ensure a page is selected
+            return render_template("index.html", error="Please select a Confluence page.", pages=pages, selected_page_id=None, previous_qa=previous_qa)
+
         page_html = fetch_confluence_page(selected_page_id)
         if "Error" in page_html:
             return render_template("index.html", error=page_html, pages=pages, selected_page_id=selected_page_id, previous_qa=previous_qa)
@@ -77,7 +79,7 @@ def index():
         
         previous_qa.append({"question": question, "answer": answer})  # Store Q&A
         
-        return render_template("index.html", question=question, answer=answer, page_id=selected_page_id, pages=pages, selected_page_id=selected_page_id, previous_qa=previous_qa)
+        return render_template("index.html", question=question, answer=answer, pages=pages, selected_page_id=selected_page_id, previous_qa=previous_qa)
 
     return render_template("index.html", pages=pages, selected_page_id=selected_page_id, previous_qa=previous_qa)
 
