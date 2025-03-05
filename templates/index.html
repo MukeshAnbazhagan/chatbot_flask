@@ -68,7 +68,9 @@
             <label for="page_id">Select a Confluence Page:</label>
             <select id="page_id" name="page_id">
                 {% for page in pages %}
-                    <option value="{{ page.id }}">{{ page.title }}</option>
+                    <option value="{{ page.id }}" {% if page.id == selected_page_id %}selected{% endif %}>
+                        {{ page.title }}
+                    </option>
                 {% endfor %}
             </select>
 
